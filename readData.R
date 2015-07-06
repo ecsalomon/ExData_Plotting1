@@ -3,10 +3,12 @@
 ### not present in the working directory, it will download and extract the data.
 
 readData <- function() {
-  # Is the file absent? If so, download and unzip the data
+  # Is the file absent? If so, download and/or unzip the data
   if (!file.exists("household_power_consumption.txt")) {
-    URL <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
-    download.file(URL, "household_power_consumption.zip", method = "curl")
+    if (!file.exists("household_power_consumption.zip")) {
+      URL <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+      download.file(URL, "household_power_consumption.zip", method = "curl") 
+    }
     unzip("household_power_consumption.zip")
   }
   # Read in the data, subset the dates of interest, 
