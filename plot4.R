@@ -27,31 +27,44 @@ par(mfrow = c(2, 2))
 
 
 ## Create the first plot
-with(power, plot(datetime, Global_active_power, type = "n",
-                 ylab = "Global Active Power",
-                 xlab=""))
-with(power, lines(datetime, Global_active_power))
+with(power, plot(datetime, Global_active_power, type = "n", # set up empty plot
+                 ylab = "Global Active Power", # y-axis label
+                 xlab="")) # no x-axis label
+with(power, lines(datetime, Global_active_power)) # add line
 
 ## Create the second plot
-with(power, plot(datetime, Voltage, type = "n"))
-with(power, lines(datetime, Voltage))
+with(power, plot(datetime, Voltage, type = "n")) # set up empty plot
+with(power, lines(datetime, Voltage)) # add line
 
 
 ## Create the third plot
-with(powerLong, plot(datetime, submetering, type = "n",
-                     ylab = "Energy sub metering",
-                     xlab=""))
+with(powerLong, plot(datetime, submetering, type = "n", # set up empty plot
+                     ylab = "Energy sub metering", # y-axis label
+                     xlab="")) # no x-axis label
+
+# Draw a black line connecting each pair of (datetime, submetering) values for
+# Sub_metering_1
 with(subset(powerLong, type == "Sub_metering_1"), lines(datetime, submetering))
+
+# Draw a red line connecting each pair of (datetime, submetering) values for
+# Sub_metering_2
 with(subset(powerLong, type == "Sub_metering_2"), lines(datetime, submetering,
                                                         col = "red"))
+
+# Draw a blue line connecting each pair of (datetime, submetering) values for
+# Sub_metering_3
 with(subset(powerLong, type == "Sub_metering_3"), lines(datetime, submetering,
                                                         col = "blue"))
-legend("topright", lwd = c(1, 1, 1), col = c("black", "red", "blue"),
+
+# Make a legend
+legend("topright", # position it in the top right
+       lwd = c(1, 1, 1), # three lines of width one
+       col = c("black", "red", "blue"), # set their colors
        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
-       bty = "n")
+       bty = "n") # no border
 
 ## Create the fourth plot
-with(power, plot(datetime, Global_reactive_power, type = "n"))
+with(power, plot(datetime, Global_reactive_power, type = "n")) # set up empty plot
 with(power, lines(datetime, Global_reactive_power))
 
 dev.off()

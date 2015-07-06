@@ -7,9 +7,9 @@ power <- data.frame(readData())
 
 
 ## Create the histogram
-png(file = "plot1.png", width = 480, height = 480)
+png(file = "plot1.png", width = 480, height = 480) # open a 480 x 480 PNG device
 hist(power$Global_active_power, 
-     col = "red",
-     main = "Global Active Power",
-     xlab = "Global Active Power (kilowatts)")
-dev.off()
+     col = "red", # set the color of the bars to red
+     main = "Global Active Power", # give the plot a title
+     xlab = "Global Active Power (kilowatts)") # label the x-axis
+dev.off() # close the device
