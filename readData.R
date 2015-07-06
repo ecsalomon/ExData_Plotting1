@@ -16,7 +16,7 @@ readData <- function() {
   power <- read.table("household_power_consumption.txt", header = TRUE, 
                       sep = ";", na.strings = "?")
   power <- power[power$Date == "1/2/2007" | power$Date == "2/2/2007",]
-  power$dateTime <- strptime(paste(power$Date, power$Time), 
+  power$datetime <- strptime(paste(power$Date, power$Time), 
                              format = "%d/%m/%Y %H:%M:%S")
   power$Date  <- as.Date(power$Date, format = "%d/%m/%Y")
   return(power)

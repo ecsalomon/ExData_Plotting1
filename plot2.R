@@ -7,9 +7,9 @@ power <- data.frame(readData())
 
 
 ## Create the histogram
-png(file = "plot1.png", width = 480, height = 480)
-hist(power$Global_active_power, 
-     col = "red",
-     main = "Global Active Power",
-     xlab = "Global Active Power (kilowatts)")
+png(file = "plot2.png", width = 480, height = 480)
+with(power, plot(datetime, Global_active_power, type = "n",
+                 ylab = "Global Active Power (kilowatts)",
+                 xlab=""))
+with(power, lines(datetime, Global_active_power))
 dev.off()
